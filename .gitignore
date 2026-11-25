@@ -9,3 +9,8 @@ data/processed/
 *.pt
 *.pth
 *.ckpt
+*.egg-info/
+build/
+dist/
+results/*
+!results/.gitkeep
