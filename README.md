@@ -15,7 +15,7 @@ PR regroupées vers `dev`, puis vers `main` après revue et tests. Conserver les
 ## Livrables
 ZIP avec code reproductible et rapport PDF 8–12 pages hors annexes : 5 décembre 2026. Soutenance : 7 décembre.
 
-Les commandes d'exécution seront complétées après implémentation.
+Les commandes d'entraînement seront complétées après implémentation des modules spécialisés.
 
 
 ## Installation et vérification
@@ -37,3 +37,12 @@ Documents : [cadrage](docs/cadrage.md), [architecture](docs/architecture.md), [i
 
 La commande de smoke test valide l'environnement et des probabilités synthétiques ; les entraînements et résultats scientifiques restent à implémenter dans les tickets spécialisés. Dataset non validé : configs/experiment.json conserve dataset=null.
 Pour les expériences futures, fixer aussi NumPy, PyTorch, CUDA et les workers de chargement ; consigner les limites de déterminisme matériel et les versions. PYTHONHASHSEED doit être défini avant le lancement si le code dépend du hash Python.
+
+
+## Préparer les expériences
+```bash
+python -m experiment.cli validate
+python -m experiment.cli plan
+```
+Le choix du dataset reste ouvert. La commande `plan` indique ce blocage et ne lance pas d'entraînement. Après validation du dataset et commit de la configuration, `python -m experiment.cli record --output results/run-001/manifest.json` prépare un manifeste de provenance sans inventer de résultats.
+Voir [intégration et livraison](docs/integration-et-livraison.md) pour le raccordement des modules, les limites actuelles et la préparation du ZIP.
