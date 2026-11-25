@@ -13,9 +13,18 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - run: python -m pip install pytest
-      - run: if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+          # numpy 2.5.4 (requirements-probabilistic-models.txt) exige Python >= 3.12
+          python-version: '3.12'
+      - name: Installation des dépendances
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest
+          if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+          if [ -f requirements-probabilistic-models.txt ]; then
+            python -m pip install torch==2.15.0+cpu torchvision==0.29.2+cpu --index-url https://download.pytorch.org/whl/cpu
+            python -m pip install -r requirements-probabilistic-models.txt
+          fi
       - run: python -m compileall -q .
-      - run: |
-          if [ -d tests ]; then python -m pytest tests; else echo 'Tests applicatifs non encore disponibles'; fi
+      - name: Tests
+        run: |
+          if [ -d tests ]; then python -m pytest tests -q; else echo 'Tests applicatifs non encore disponibles'; fi
