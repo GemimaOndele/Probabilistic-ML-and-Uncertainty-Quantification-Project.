@@ -4,6 +4,7 @@ import numpy as np
 import torch
 
 from src.models.cnn import build_model
+from src.uncertainty.decomposition import decompose_uncertainty
 from src.uncertainty.mc_dropout import entropy, predict_mc, summarize_predictions
 
 
@@ -53,6 +54,29 @@ def test_information_mutuelle_nulle_avec_une_passe():
     p = np.array([[[0.7, 0.3]]], dtype=np.float32)  # [T=1, N=1, K=2]
     summary = summarize_predictions(p)
     assert np.isclose(summary["mutual_information"][0], 0.0, atol=1e-12)
+
+
+def test_decomposition_equivalente_si_membres_identiques():
+    # Un ensemble de 3 membres identiques doit donner la meme decomposition
+    # qu'un seul reseau avec les memes passes dropout.
+    p = np.array(
+        [[[0.8, 0.2], [0.3, 0.7]], [[0.7, 0.3], [0.4, 0.6]]], dtype=np.float32
+    )  # [T=2, N=2, K=2]
+    single = decompose_uncertainty(p)
+    ensemble = decompose_uncertainty(np.stack([p, p, p]))  # [M=3, T=2, N=2, K=2]
+    assert ensemble["total_passes"] == 6
+    assert ensemble["num_passes_per_member"] == 2
+    assert np.allclose(
+        ensemble["mutual_information"], single["mutual_information"], atol=1e-6
+    )
+    assert np.allclose(ensemble["between_member_mi"], 0.0, atol=1e-6)
+
+
+def test_decomposition_rejette_mauvaise_dimension():
+    import pytest
+
+    with pytest.raises(ValueError):
+        decompose_uncertainty(np.zeros((2, 3), dtype=np.float32))
 
 
 def test_metriques_avec_labels():
