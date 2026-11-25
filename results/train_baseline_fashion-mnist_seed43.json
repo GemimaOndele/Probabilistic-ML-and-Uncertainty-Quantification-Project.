@@ -1,0 +1,70 @@
+{
+  "config": {
+    "dataset": "fashion-mnist",
+    "seed": 43,
+    "split_seed": 42,
+    "epochs": 3,
+    "batch_size": 128,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "dropout_p": 0.25,
+    "hidden": 128,
+    "val_size": 5000,
+    "calib_size": 5000,
+    "limit_train": null,
+    "limit_val": null,
+    "normalization": {
+      "mean": [
+        0.286
+      ],
+      "std": [
+        0.353
+      ]
+    },
+    "device": "cpu",
+    "torch_version": "2.15.0+cpu"
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train": {
+        "loss": 0.5146642501354217,
+        "accuracy": 0.81408
+      },
+      "validation": {
+        "loss": 0.33431964960098265,
+        "accuracy": 0.8696
+      }
+    },
+    {
+      "epoch": 2,
+      "train": {
+        "loss": 0.3558285261440277,
+        "accuracy": 0.87114
+      },
+      "validation": {
+        "loss": 0.29256907691955564,
+        "accuracy": 0.89
+      }
+    },
+    {
+      "epoch": 3,
+      "train": {
+        "loss": 0.3156913035392761,
+        "accuracy": 0.88486
+      },
+      "validation": {
+        "loss": 0.2530548775672913,
+        "accuracy": 0.9042
+      }
+    }
+  ],
+  "best_validation_accuracy": 0.9042,
+  "train_seconds": 124.73432490002597,
+  "example_counts": {
+    "train": 50000,
+    "validation": 5000,
+    "calibration": 5000,
+    "test": 10000
+  }
+}
