@@ -1,0 +1,39 @@
+{
+  "method": "deep_ensemble_mc_dropout",
+  "dataset": "fashion-mnist",
+  "split": "test",
+  "num_examples": 10000,
+  "num_members": 3,
+  "member_seeds": [
+    42,
+    43,
+    44
+  ],
+  "split_seed": 42,
+  "mc_samples_per_member": 10,
+  "total_stochastic_passes": 30,
+  "device": "cpu",
+  "accuracy": 0.8959,
+  "nll": 0.2895573377609253,
+  "mean_predictive_entropy": 0.38604086743360266,
+  "mean_expected_entropy": 0.32416815492444073,
+  "mean_mutual_information": 0.06187271250916192,
+  "mean_mi_correct": 0.052201224139350966,
+  "mean_mi_incorrect": 0.14510697216827462,
+  "mean_between_member_mi": 0.01856122799668001,
+  "training_seconds_per_member": [
+    118.91914119999274,
+    124.73432490002597,
+    116.7715188000002
+  ],
+  "training_seconds_total": 360.4249849000189,
+  "inference_seconds_ensemble": 67.74452800001018,
+  "comparaison_mc_dropout": {
+    "budget_egal_passes": true,
+    "mc_total_passes": 30,
+    "accuracy_mc": 0.8879,
+    "nll_mc": 0.30356597900390625,
+    "mean_mutual_information_mc": 0.04863327370707262,
+    "inference_seconds_mc": 78.09759600000689
+  }
+}

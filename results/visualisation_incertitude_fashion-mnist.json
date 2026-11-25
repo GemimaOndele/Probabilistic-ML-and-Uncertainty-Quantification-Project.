@@ -1,0 +1,141 @@
+{
+  "dataset": "fashion-mnist",
+  "split": "test",
+  "num_examples": 10000,
+  "num_samples_T": 30,
+  "source_probs": "results/probs_mc_fashion-mnist_test.npz",
+  "mean_mi_correct": 0.04163437350029263,
+  "mean_mi_incorrect": 0.10406880888637642,
+  "selections": {
+    "incorrect_high_mi": [
+      {
+        "index": 1557,
+        "true_label": "Bag",
+        "predicted_label": "Dress",
+        "confidence": 0.3858076333999634,
+        "predictive_entropy": 1.4387013214627142,
+        "mutual_information": 0.46526286970887476
+      },
+      {
+        "index": 5512,
+        "true_label": "Ankle boot",
+        "predicted_label": "Shirt",
+        "confidence": 0.2796115577220917,
+        "predictive_entropy": 1.6228221196696744,
+        "mutual_information": 0.456258209176849
+      },
+      {
+        "index": 669,
+        "true_label": "Bag",
+        "predicted_label": "Sandal",
+        "confidence": 0.6378843784332275,
+        "predictive_entropy": 1.1074125184453791,
+        "mutual_information": 0.3653751016086848
+      },
+      {
+        "index": 4462,
+        "true_label": "Dress",
+        "predicted_label": "Trouser",
+        "confidence": 0.4094465672969818,
+        "predictive_entropy": 1.1658942795357037,
+        "mutual_information": 0.34998850164640116
+      },
+      {
+        "index": 3236,
+        "true_label": "T-shirt/top",
+        "predicted_label": "Bag",
+        "confidence": 0.5641727447509766,
+        "predictive_entropy": 1.1402855939485375,
+        "mutual_information": 0.3364831856827082
+      }
+    ],
+    "correct_high_mi": [
+      {
+        "index": 4218,
+        "true_label": "Bag",
+        "predicted_label": "Bag",
+        "confidence": 0.6333411335945129,
+        "predictive_entropy": 1.245066554960729,
+        "mutual_information": 0.41618607798118445
+      },
+      {
+        "index": 4394,
+        "true_label": "Dress",
+        "predicted_label": "Dress",
+        "confidence": 0.5039031505584717,
+        "predictive_entropy": 1.334179349273623,
+        "mutual_information": 0.40712208374356285
+      },
+      {
+        "index": 8965,
+        "true_label": "Bag",
+        "predicted_label": "Bag",
+        "confidence": 0.6125580072402954,
+        "predictive_entropy": 1.230782435795308,
+        "mutual_information": 0.3878652971522635
+      },
+      {
+        "index": 7672,
+        "true_label": "Bag",
+        "predicted_label": "Bag",
+        "confidence": 0.613041877746582,
+        "predictive_entropy": 0.9594485417225864,
+        "mutual_information": 0.3594936116856956
+      },
+      {
+        "index": 9596,
+        "true_label": "Bag",
+        "predicted_label": "Bag",
+        "confidence": 0.5115061402320862,
+        "predictive_entropy": 1.1974116439545326,
+        "mutual_information": 0.34156448252587723
+      }
+    ],
+    "incorrect_low_mi": [
+      {
+        "index": 23,
+        "true_label": "Ankle boot",
+        "predicted_label": "Sandal",
+        "confidence": 0.9954080581665039,
+        "predictive_entropy": 0.03192359294418082,
+        "mutual_information": 0.004473954379208736
+      },
+      {
+        "index": 2914,
+        "true_label": "Sneaker",
+        "predicted_label": "Ankle boot",
+        "confidence": 0.9947646260261536,
+        "predictive_entropy": 0.033530503429141066,
+        "mutual_information": 0.006294177606978566
+      },
+      {
+        "index": 3531,
+        "true_label": "T-shirt/top",
+        "predicted_label": "Dress",
+        "confidence": 0.9898635149002075,
+        "predictive_entropy": 0.06652448725777962,
+        "mutual_information": 0.011614473821084804
+      },
+      {
+        "index": 4727,
+        "true_label": "Shirt",
+        "predicted_label": "T-shirt/top",
+        "confidence": 0.9485840201377869,
+        "predictive_entropy": 0.20606816207965273,
+        "mutual_information": 0.011838925092893526
+      },
+      {
+        "index": 787,
+        "true_label": "Trouser",
+        "predicted_label": "Dress",
+        "confidence": 0.9905836582183838,
+        "predictive_entropy": 0.0627869847444269,
+        "mutual_information": 0.01187073769175919
+      }
+    ]
+  },
+  "figures": [
+    "results\\figures\\exemples_incertitude.png",
+    "results\\figures\\histogramme_mi.png"
+  ]
+}

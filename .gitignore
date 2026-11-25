@@ -9,3 +9,6 @@ data/processed/
 *.pt
 *.pth
 *.ckpt
+results/splits/
+*.npy
+*.npz

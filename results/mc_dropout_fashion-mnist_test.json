@@ -1,0 +1,22 @@
+{
+  "method": "mc_dropout",
+  "dataset": "fashion-mnist",
+  "checkpoint": "results/checkpoints/baseline_fashion-mnist_seed42.pt",
+  "checkpoint_seed": 42,
+  "split": "test",
+  "num_examples": 10000,
+  "num_samples_T": 30,
+  "dropout_p": 0.25,
+  "seed": 42,
+  "device": "cpu",
+  "accuracy_deterministic": 0.8913,
+  "nll_deterministic": 0.28968745470046997,
+  "accuracy_mc": 0.8879,
+  "nll_mc": 0.30356597900390625,
+  "mean_predictive_entropy": 0.3769365405735695,
+  "mean_expected_entropy": 0.3283032668664969,
+  "mean_mutual_information": 0.04863327370707262,
+  "mean_mutual_information_correct": 0.04163437350029263,
+  "mean_mutual_information_incorrect": 0.10406880888637642,
+  "inference_seconds_mc": 78.09759600000689
+}
