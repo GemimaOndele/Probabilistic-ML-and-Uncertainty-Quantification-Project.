@@ -46,3 +46,10 @@ python -m experiment.cli plan
 ```
 Le choix du dataset reste ouvert. La commande `plan` indique ce blocage et ne lance pas d'entraînement. Après validation du dataset et commit de la configuration, `python -m experiment.cli record --output results/run-001/manifest.json` prépare un manifeste de provenance sans inventer de résultats.
 Voir [intégration et livraison](docs/integration-et-livraison.md) pour le raccordement des modules, les limites actuelles et la préparation du ZIP.
+
+## Contrôler les exports entre modules
+```bash
+python -m experiment.artifacts normalize results/legacy.npz results/canonical.npz
+python -m experiment.artifacts check-pair results/calibration.npz results/test.npz
+```
+La première commande relie les clés `probs_mc` et `mc_probs` sans modifier les valeurs. La seconde exige des identifiants réels et disjoints ; elle ne valide pas à elle seule le dataset, l'ordre des classes ou le checkpoint. Voir la [revue d'intégration du 28 novembre](docs/revue-integration-2026-11-28.md) pour les points à résoudre avec les PR #34 et #35.
