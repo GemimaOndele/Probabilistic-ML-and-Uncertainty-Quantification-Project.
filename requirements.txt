@@ -1,0 +1,5 @@
+# Direct versions pinned; full resolved environment is recorded by pip freeze.
+numpy==2.3.5
+torch==2.5.1
+torchvision==0.20.1
+pytest==8.3.5

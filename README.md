@@ -15,4 +15,41 @@ PR regroupées vers `dev`, puis vers `main` après revue et tests. Conserver les
 ## Livrables
 ZIP avec code reproductible et rapport PDF 8–12 pages hors annexes : 5 décembre 2026. Soutenance : 7 décembre.
 
-Les commandes d'exécution seront complétées après implémentation.
+Les commandes d'entraînement seront complétées après implémentation des modules spécialisés.
+
+
+## Installation et vérification
+Python 3.11 (CI de référence), CPU. Depuis la racine :
+```bash
+python -m venv .venv
+source .venv/bin/activate
+# Windows PowerShell : .venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m pip install --no-deps -e .
+python -m pip check
+python -m pytest
+python scripts/check_environment.py
+python -m pip freeze > results/environment.txt
+```
+Les dépendances directes sont figées ; environment.txt enregistre la résolution transitive de la machine. Le fichier requirements.txt ne constitue pas un verrou multi-plateforme complet. GPU : environnement séparé à valider et documenter avant comparaison.
+
+Documents : [cadrage](docs/cadrage.md), [architecture](docs/architecture.md), [interfaces](docs/contrat-technique.md), [protocole](docs/protocole-experimental.md), [contrôle GitHub](docs/validation-github.md).
+
+La commande de smoke test valide l'environnement et des probabilités synthétiques ; les entraînements et résultats scientifiques restent à implémenter dans les tickets spécialisés. Dataset non validé : configs/experiment.json conserve dataset=null.
+Pour les expériences futures, fixer aussi NumPy, PyTorch, CUDA et les workers de chargement ; consigner les limites de déterminisme matériel et les versions. PYTHONHASHSEED doit être défini avant le lancement si le code dépend du hash Python.
+
+
+## Préparer les expériences
+```bash
+python -m experiment.cli validate
+python -m experiment.cli plan
+```
+Le choix du dataset reste ouvert. La commande `plan` indique ce blocage et ne lance pas d'entraînement. Après validation du dataset et commit de la configuration, `python -m experiment.cli record --output results/run-001/manifest.json` prépare un manifeste de provenance sans inventer de résultats.
+Voir [intégration et livraison](docs/integration-et-livraison.md) pour le raccordement des modules, les limites actuelles et la préparation du ZIP.
+
+## Contrôler les exports entre modules
+```bash
+python -m experiment.artifacts normalize results/legacy.npz results/canonical.npz
+python -m experiment.artifacts check-pair results/calibration.npz results/test.npz
+```
+La première commande relie les clés `probs_mc` et `mc_probs` sans modifier les valeurs. La seconde exige des identifiants réels et disjoints ; elle ne valide pas à elle seule le dataset, l'ordre des classes ou le checkpoint. Voir la [revue d'intégration du 28 novembre](docs/revue-integration-2026-11-28.md) pour les points à résoudre avec les PR #34 et #35.

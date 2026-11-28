@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "dataset": null,
+  "dataset_status": "pending_team_validation_issue_5",
+  "split_seed": 42,
+  "training_seeds": [42, 43, 44],
+  "train_pool_fractions": {"train": 0.8, "validation": 0.1, "calibration": 0.1},
+  "preserve_official_test": true,
+  "mc_passes": 30,
+  "ece_bins": 15,
+  "device": "cpu"
+}
